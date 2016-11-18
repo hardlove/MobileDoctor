@@ -80,6 +80,11 @@ public abstract class BaseActivity<T extends BasePresenter, E extends BaseModel>
         this.initView();
     }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
     /**
      * 设置layout前配置
      */
