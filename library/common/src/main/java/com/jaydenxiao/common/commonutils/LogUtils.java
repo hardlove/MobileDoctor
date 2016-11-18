@@ -63,7 +63,7 @@ public class LogUtils {
     }
     public static void logw(String message, Object... args) {
         if (DEBUG_ENABLE) {
-            Logger.v(message, args);
+            Logger.w(message, args);
         }
     }
     public static void logwtf(String message, Object... args) {
