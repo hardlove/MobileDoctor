@@ -1,7 +1,6 @@
 package com.xinyang.android.mobiledoctor.api;
 
 
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.SparseArray;
 
@@ -56,9 +55,9 @@ public class ApiManager {
     8. FORCE_CACHE 只走缓存*/
 
     /**
-     * 设缓存有效期为两天
+     * 设缓存有效期为一天
      */
-    private static final long CACHE_STALE_SEC = 60 * 60 * 24 * 2;
+    private static final long CACHE_STALE_SEC = 60 * 60 * 24;
     /**
      * 查询缓存的Cache-Control设置，为if-only-cache时只查询缓存而不会请求服务器，max-stale可以配合设置缓存失效时间
      * max-stale 指示客户机可以接收超出超时期间的响应消息。如果指定max-stale消息的值，那么客户机可接收超出超时期指定值之内的响应消息。
@@ -99,7 +98,8 @@ public class ApiManager {
                 .addInterceptor(logInterceptor)
                 .cache(cache)
                 .build();
-
+        //为了避免使用Gson时遇到locale影响Date格式的问题，使用GsonBuilder来创建Gson对象，
+        // 在创建过程中调用GsonBuilder.setDateFormat(String)指定一个固定的格式即可。
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").serializeNulls().create();
         retrofit = new Retrofit.Builder()
                 .client(okHttpClient)
@@ -128,7 +128,6 @@ public class ApiManager {
     /**
      * 根据网络状况获取缓存的策略
      */
-    @NonNull
     public static String getCacheControl() {
         return NetWorkUtils.isNetConnected(BaseApplication.getAppContext()) ? CACHE_CONTROL_AGE : CACHE_CONTROL_CACHE;
     }
