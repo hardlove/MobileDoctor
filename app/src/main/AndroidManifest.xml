@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.xinyang.android.mobiledoctor" >
+          package="com.xinyang.android.mobiledoctor">
+
     <application
         android:name=".app.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
 
         <!--冷启动界面-->
-        <activity android:name=".ui.login.activity.SplashActivity"
+        <activity
+            android:name=".ui.login.activity.SplashActivity"
+            android:launchMode="singleTask"
             android:theme="@style/AppTheme.Launcher"
             >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.login.activity.LoginActivity"/>
+        <activity
+            android:name=".ui.login.activity.LoginActivity"
+            android:launchMode="singleTask"
+            />
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:launchMode="singleTask"
+            />
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.xinyang.android.mobiledoctor.ui.main;
 
 import com.jaydenxiao.common.base.BaseActivity;
+import com.xinyang.android.mobiledoctor.R;
 
 /**
  * Created by Chenlu on 2016/11/18.
@@ -9,7 +10,7 @@ import com.jaydenxiao.common.base.BaseActivity;
 public class MainActivity extends BaseActivity {
     @Override
     public int getLayoutId() {
-        return 0;
+        return R.layout.activity_main;
     }
 
     @Override
